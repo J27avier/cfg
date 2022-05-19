@@ -115,18 +115,31 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Variable Exports
 export PATH="$PATH:/opt/mssql-tools/bin"
+export PATH=$PATH:/usr/local/go/bin
+export NOTES_DIR="/home/javier/Documents/Escuela/SCRG/notes-scrg"
 
 # My own aliases
 alias c='cd ..'
-alias matlab='/usr/local/MATLAB/R2021a/bin/matlab &> /dev/null &'
-alias android-stu='/usr/local/android-studio/bin/studio.sh &> /dev/null &' 
-alias clases='cd ~/Documents/Escuela/Fall21/'
+alias rm='trash'
+alias matlab='/usr/local/MATLAB/R2021a/bin/matlab &> /dev/null && exit'
+alias android-stu='/usr/local/android-studio/bin/studio.sh &> /dev/null && exit' 
+alias clases='cd ~/Documents/Escuela/Wint22/'
+alias clasesPast='cd ~/Documents/Escuela/Fall21/'
+alias scrg='cd ~/Documents/Escuela/SCRG/'
 alias libros='cd ~/Documents/Books/'
+alias clipath='pwd | xclip -selection c'
+alias clipb='xclip -selection c'
+alias n-top='watch -n 0.5 nvidia-smi'
 
 # My own options
 set -o vi
 
 # ROS
 source /opt/ros/noetic/setup.bash
+
+ export VISUAL=vim;
+ export EDITOR=vim;
 
