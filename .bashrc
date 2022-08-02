@@ -119,6 +119,7 @@ fi
 # Variable Exports
 export PATH="$PATH:/opt/mssql-tools/bin"
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/Scripts
 export NOTES_DIR="/home/javier/Documents/Escuela/SCRG/notes-scrg"
 
 # My own aliases
@@ -136,6 +137,8 @@ alias n-top='watch -n 0.5 nvidia-smi'
 
 # My own options
 set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
 
 # ROS
 source /opt/ros/noetic/setup.bash

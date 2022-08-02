@@ -22,6 +22,7 @@ set ttyfast
 " set hlsearch
 " colorscheme delek
 
+
 " For copy-cut-paste
 set clipboard=unnamedplus
 " This makes vim turn paste mode on/off automatically when you paste?
@@ -33,6 +34,10 @@ set timeout
 " set ttimeout
 set timeoutlen=500
 " set ttimeoutlen=10
+
+" Statusline
+" set statusline=%=\ %p%%\ %m\ %f
+set laststatus=2
 
 " For newlines
 nnoremap <leader>o o<Esc>0"_D
@@ -58,8 +63,8 @@ inoremap $$ $$<Esc>i
 inoremap <> <><Esc>i
 
 " for c
-autocmd Filetype c,javascript inoremap {<CR> {<C-o>o}<C-o>O
-autocmd Filetype c,javascript inoremap ;; <Esc>A;<Esc><Esc>
+autocmd Filetype c,javascript,rust inoremap {<CR> {<C-o>o}<C-o>O
+autocmd Filetype c,javascript,rust inoremap ;; <Esc>A;<Esc><Esc>
 
 " for python
 " autocmd Filetype python inoremap :<CR> :<C-o>o<tab> YCM alerady takes care of that
@@ -72,8 +77,11 @@ set nofoldenable
 set foldlevel=10
 
 
-" for notes
-nnoremap <leader>ni :e $NOTES_DIR/index.md<CR>cd $NOTES_DIR<CR>
+" for tabs
+nnoremap <leader><PageUp> :tabp<CR>
+nnoremap <leader><PageDown> :tabn<CR>
+nnoremap <leader><leader>t :tabnew<CR>:E<CR>
+
 
 " Plugins
 " Vim plugged autoinstall
@@ -136,3 +144,4 @@ nnoremap <silent><leader>gt :YcmCompleter GoTo<CR>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 autocmd Filetype netrw nnoremap <leader>u :bwipe<CR>
 autocmd FileType tex let g:ycm_auto_trigger=0
+
