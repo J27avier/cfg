@@ -11,6 +11,7 @@ set smarttab
 set expandtab
 set autoindent
 set breakindent
+set mouse=a
 
 set number
 set relativenumber
@@ -54,6 +55,7 @@ vnoremap x "_x
 
 " In insert
 inoremap jj <Esc>
+inoremap kk <Esc>
 inoremap "" ""<Esc>i
 inoremap '' ''<Esc>i
 inoremap () ()<Esc>i
@@ -61,6 +63,7 @@ inoremap {} {}<Esc>i
 inoremap [] []<Esc>i
 inoremap $$ $$<Esc>i
 inoremap <> <><Esc>i
+inoremap `` ``<Esc>i
 
 " for c
 autocmd Filetype c,javascript,rust inoremap {<CR> {<C-o>o}<C-o>O
@@ -80,7 +83,7 @@ set foldlevel=10
 " for tabs
 nnoremap <leader><PageUp> :tabp<CR>
 nnoremap <leader><PageDown> :tabn<CR>
-nnoremap <leader><leader>t :tabnew<CR>:E<CR>
+nnoremap <leader><leader>t :Tex<CR>
 
 
 " Plugins
@@ -98,7 +101,22 @@ Plug 'dbakker/vim-paragraph-motion'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'tomlion/vim-solidity'
+Plug 'cespare/vim-toml'
+Plug 'sirver/ultisnips'
+Plug 'justinmk/vim-sneak'
+Plug 'dense-analysis/ale'
+Plug 'vim-python/python-syntax'
+Plug 'Yggdroot/indentLine'
+Plug 'dhruvasagar/vim-table-mode'
+"Plug 'jeetsukumaran/vim-indentwise'
 call plug#end()
+
+" No indentLine for tex
+autocmd FileType tex :IndentLinesDisable
+
+" Python-syntax
+let g:python_highlight_all = 1
+let g:python_highlight_space_errors = 0
 
 " Colorscheme
 let g:gruvbox_guisp_fallback = "bg"
@@ -123,10 +141,15 @@ set wildmenu
 " For tags
 command! MakeTags !ctags -R .
 
+" For indentline
+let g:indentLine_char = '│'
+
 " For tree
 " let g:newtrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_liststyle=3
+let g:netrw_silent=1
+" let g:netrw_scp_cmd="scp -F ~/.ssh/config_scp -q"
 " let g:netrw_list_hide=netrw_gitignore#Hide()
 
 " For windows
@@ -140,8 +163,23 @@ nnoremap <leader><leader>e :Vex!<CR>
 nnoremap <leader><leader>o :Hex<CR>
 nnoremap <leader><leader>i :Ex<CR>
 nnoremap <leader><leader>d :bd<CR>
+nnoremap <leader><leader>l :Lex<CR>:vertical resize 24<CR>
 nnoremap <silent><leader>gt :YcmCompleter GoTo<CR>
 let g:ycm_autoclose_preview_window_after_insertion = 1
 autocmd Filetype netrw nnoremap <leader>u :bwipe<CR>
 autocmd FileType tex let g:ycm_auto_trigger=0
+"let g:ycm_filetype_blacklist = {
+"        \ 'tex': 1,
+"        \ 'plaintext' : 1,
+"        \}
+
+" Snippets
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']    
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 

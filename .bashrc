@@ -127,22 +127,26 @@ alias c='cd ..'
 alias rm='trash'
 alias matlab='/usr/local/MATLAB/R2021a/bin/matlab &> /dev/null && exit'
 alias android-stu='/usr/local/android-studio/bin/studio.sh &> /dev/null && exit' 
-alias clases='cd ~/Documents/Escuela/Wint22/'
-alias clasesPast='cd ~/Documents/Escuela/Fall21/'
+alias clases='cd ~/Documents/Escuela/Wint23/'
+alias clasesPast='cd ~/Documents/Escuela/Wint22/'
 alias scrg='cd ~/Documents/Escuela/SCRG/'
 alias libros='cd ~/Documents/Books/'
-alias clipath='pwd | xclip -selection c'
+alias clipath='printf %s "$PWD" | xclip -sel clip'
 alias clipb='xclip -selection c'
 alias n-top='watch -n 0.5 nvidia-smi'
+alias i-top='sudo intel_gpu_top'
+alias sc-notes='source /home/javier/Scripts/scrg-notes.sh'
+alias sc-evcharge="cd ~/Documents/Escuela/SCRG/Project/EvCharge && source ../env_marlvr/bin/activate"
+alias sc-contracts="cd ~/Documents/Escuela/SCRG/Project/Virtual_Power_Plant"
+alias thes=". thes"
+alias f="xdg-open ."
 
 # My own options
 set -o vi
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
 
-# ROS
-source /opt/ros/noetic/setup.bash
-
  export VISUAL=vim;
  export EDITOR=vim;
 
+. "$HOME/.cargo/env"
